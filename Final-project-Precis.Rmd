@@ -1,0 +1,15 @@
+---
+title: "Final Project Precis"
+author: "Michael Calabro"
+date: "10/20/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+## My Project Idea
+
+This will be my project idea.
