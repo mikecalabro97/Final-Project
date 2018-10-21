@@ -16,7 +16,7 @@ B_2017 <- read_csv("Batting_2017.csv")
 
 ## My Project Idea
 
-My plan is to use Sean Lahman's Baseball database to investigate and expound upon a curious baseball statistic that I saw online earlier this semester. Namely, I wish to investigate potential causes of the fact that total strikeouts in the MLB have increased year over year for the past thirteen years. As of now, I have access to the Lahman dataset, which I accessed as a package in R, but it only goes up to 2016 I believe. However, on Sean Lahman's website, there is data up to 2017, so I added this to my repo.
+My plan is to use Sean Lahman's Baseball database to investigate and expound upon a curious baseball statistic that I saw online earlier this semester. Namely, I wish to investigate potential causes of the fact that total strikeouts in the MLB have increased year over year for the past thirteen years. As of now, I have access to the Lahman dataset, which I could access as a package in R, but it only goes up to 2016. However, on Sean Lahman's website, there is data up to 2017, so I added this to my repo, and below I have the summary of the strikeout statistic. 
 
 ```{r}
 B_2017 %>%
@@ -26,3 +26,4 @@ B_2017 %>%
   arrange(desc(yearID))
 ```
 
+My plan is to create a shiny app which one can use to view different relations between different batting and pitching statistics which may be relevant to the curious strikeout stat.

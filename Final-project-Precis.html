@@ -131,7 +131,7 @@ $(document).ready(function () {
 
 <div id="my-project-idea" class="section level2">
 <h2>My Project Idea</h2>
-<p>My plan is to use Sean Lahman’s Baseball database to investigate and expound upon a curious baseball statistic that I saw online earlier this semester. Namely, I wish to investigate potential causes of the fact that total strikeouts in the MLB have increased year over year for the past thirteen years. As of now, I have access to the Lahman dataset, which I accessed as a package in R, but it only goes up to 2016 I believe. However, on Sean Lahman’s website, there is data up to 2017, so I added this to my repo.</p>
+<p>My plan is to use Sean Lahman’s Baseball database to investigate and expound upon a curious baseball statistic that I saw online earlier this semester. Namely, I wish to investigate potential causes of the fact that total strikeouts in the MLB have increased year over year for the past thirteen years. As of now, I have access to the Lahman dataset, which I could access as a package in R, but it only goes up to 2016. However, on Sean Lahman’s website, there is data up to 2017, so I added this to my repo, and below I have the summary of the strikeout statistic.</p>
 <pre class="r"><code>B_2017 %&gt;%
   filter(yearID %in% 2000:2017) %&gt;%
   group_by(yearID) %&gt;%
@@ -158,6 +158,7 @@ $(document).ready(function () {
 ## 16   2002    31394
 ## 17   2001    32404
 ## 18   2000    31356</code></pre>
+<p>My plan is to create a shiny app which one can use to view different relations between different batting and pitching statistics which may be relevant to the curious strikeout stat.</p>
 </div>
 
 
