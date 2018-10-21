@@ -131,7 +131,33 @@ $(document).ready(function () {
 
 <div id="my-project-idea" class="section level2">
 <h2>My Project Idea</h2>
-<p>This will be my project idea.</p>
+<p>My plan is to use Sean Lahman’s Baseball database to investigate and expound upon a curious baseball statistic that I saw online earlier this semester. Namely, I wish to investigate potential causes of the fact that total strikeouts in the MLB have increased year over year for the past thirteen years. As of now, I have access to the Lahman dataset, which I accessed as a package in R, but it only goes up to 2016 I believe. However, on Sean Lahman’s website, there is data up to 2017, so I added this to my repo.</p>
+<pre class="r"><code>B_2017 %&gt;%
+  filter(yearID %in% 2000:2017) %&gt;%
+  group_by(yearID) %&gt;%
+  summarise(total_SO = sum(SO)) %&gt;%
+  arrange(desc(yearID))</code></pre>
+<pre><code>## # A tibble: 18 x 2
+##    yearID total_SO
+##     &lt;int&gt;    &lt;int&gt;
+##  1   2017    40104
+##  2   2016    38982
+##  3   2015    37446
+##  4   2014    37441
+##  5   2013    36710
+##  6   2012    36426
+##  7   2011    34488
+##  8   2010    34306
+##  9   2009    33591
+## 10   2008    32884
+## 11   2007    32189
+## 12   2006    31655
+## 13   2005    30644
+## 14   2004    31828
+## 15   2003    30801
+## 16   2002    31394
+## 17   2001    32404
+## 18   2000    31356</code></pre>
 </div>
 
 
