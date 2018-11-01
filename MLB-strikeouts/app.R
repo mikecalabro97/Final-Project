@@ -8,6 +8,15 @@
 #
 
 library(shiny)
+library(tidyverse)
+
+B_2017 <- read_csv("Batting_2017.csv")
+
+so_x_ba <- B_2017 %>%
+  filter(yearID %in% 2000:2017) %>%
+  group_by(yearID) %>%
+  summarise(total_SO = sum(SO), mean_BA = ((sum(H)) / (sum(AB)))) %>%
+  arrange(desc(yearID))
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
@@ -15,19 +24,23 @@ ui <- fluidPage(
    # Application title
    titlePanel("MLB Strikeouts Have Increased Over the Past 13 Seasons"),
    
-   # Sidebar with a slider input for number of bins 
+   # Sidebar with two inputs
    sidebarLayout(
       sidebarPanel(
-         sliderInput("bins",
-                     "Number of bins:",
-                     min = 1,
-                     max = 50,
-                     value = 30)
+         selectInput(inputId = "x",
+                     label = "X-axis",
+                     choices = "yearID"),
+         
+         selectInput(inputId = "y",
+                     label = "Y-axis:",
+                     choices = c("Total Strikeouts" = "total_SO", 
+                                 "Mean Batting Avg" = "mean_BA"),
+                     selected = "total_SO")
       ),
       
       # Show a plot of the generated distribution
       mainPanel(
-         plotOutput("distPlot")
+         plotOutput(outputId = "scatterplot")
       )
    )
 )
@@ -35,13 +48,8 @@ ui <- fluidPage(
 # Define server logic required to draw a histogram
 server <- function(input, output) {
    
-   output$distPlot <- renderPlot({
-      # generate bins based on input$bins from ui.R
-      x    <- faithful[, 2] 
-      bins <- seq(min(x), max(x), length.out = input$bins + 1)
-      
-      # draw the histogram with the specified number of bins
-      hist(x, breaks = bins, col = 'darkgray', border = 'white')
+   output$scatterplot <- renderPlot({
+     ggplot(data = so_x_ba, aes(x = input$x, y = input$y)) + geom_point()
    })
 }
 
