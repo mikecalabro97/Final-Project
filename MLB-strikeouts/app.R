@@ -27,15 +27,11 @@ ui <- fluidPage(
    # Sidebar with two inputs
    sidebarLayout(
       sidebarPanel(
-         selectInput(inputId = "x",
-                     label = "X-axis",
-                     choices = "yearID"),
-         
          selectInput(inputId = "y",
                      label = "Y-axis:",
-                     choices = c("Total Strikeouts" = "total_SO", 
-                                 "Mean Batting Avg" = "mean_BA"),
-                     selected = "total_SO")
+                     choices = c("Total Strikeouts" = so_x_ba$total_SO, 
+                                 "Mean Batting Avg" = so_x_ba$mean_BA),
+                     selected = so_x_ba$mean_BA)
       ),
       
       # Show a plot of the generated distribution
@@ -49,7 +45,7 @@ ui <- fluidPage(
 server <- function(input, output) {
    
    output$scatterplot <- renderPlot({
-     ggplot(data = so_x_ba, aes(x = input$x, y = input$y)) + geom_point()
+     ggplot(data = so_x_ba, aes(x = yearID, y = input$y)) + geom_point()
    })
 }
 
